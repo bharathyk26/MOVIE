@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Movie Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .btn {
+            padding: 15px 30px;
+            background-color: #007BFF;
+            color: white;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to Movie Ticket Booking</h1>
+    
+    <div class="container">
+        <!-- Link to Admin Login -->
+        <a href="{{ url_for('admin_login') }}" class="btn">Admin Login</a>
+        
+        <!-- Link to User Login -->
+        <a href="{{ url_for('login') }}" class="btn">User Login</a>
+    </div>
+
+</body>
+</html>

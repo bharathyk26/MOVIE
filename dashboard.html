@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #79b6f3;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #34495e;
+            margin-top: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .logout-link {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: rgb(218, 133, 133);
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .logout-link:hover {
+            background-color: #c82333;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            width: 100%;
+            background-color: #007bff;
+            padding: 10px 0;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        .navbar a:hover {
+            color: #ffd700;
+        }
+
+        /* About Section */
+        .about-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.1em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <h2>Welcome to the Admin Dashboard</h2>
+
+    {% if session['role'] == 'admin' %}
+<!-- Navbar -->
+    <div class="navbar">
+        <a href="{{ url_for('dashboard') }}">Dashboard</a>
+        <a href="{{ url_for('add_movie') }}">Add Movie</a>
+        <a href="{{ url_for('add_showtime') }}">Add Showtime</a>
+        <a href="{{ url_for('admin_view_bookings') }}">View Bookings</a>
+    </div>
+    {% else %}
+        <h3>User Features</h3>
+        <ul>
+            <li><a href="{{ url_for('movies') }}">Browse Movies</a></li>
+            <li><a href="{{ url_for('user_view_bookings') }}">My Bookings</a></li>
+        </ul>
+    {% endif %}
+
+    <!-- About Section -->
+    <div class="about-section">
+        <h3>About the Movie Ticket Booking System</h3>
+        <p>This is a powerful and user-friendly movie ticket booking system designed to make the movie-watching experience seamless. 
+        Users can browse movies, select showtimes, and book tickets with ease. Admins have the ability to add new movies, 
+        manage showtimes, and view all bookings in real-time.</p>
+    </div>
+
+    <a class="logout-link" href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

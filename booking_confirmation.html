@@ -1,0 +1,65 @@
+<!-- templates/booking_confirmation.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #e8f0fe;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .confirmation-box {
+            background-color: #fff;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #28a745;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation-box">
+        <h2>Booking Confirmed!</h2>
+        <p><strong>Booking ID:</strong> {{ booking.BookingID }}</p>
+        <p><strong>Movie:</strong> {{ booking.Title }}</p>
+        <p><strong>Date:</strong> {{ booking.ShowDate }}</p>
+        <p><strong>Time:</strong> {{ booking.ShowTime }}</p>
+        <p><strong>Tickets:</strong> {{ booking.NumTickets }}</p>
+        <a href="{{ url_for('home') }}">Back to Home</a>
+    </div>
+</body>
+</html>

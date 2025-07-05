@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Book Tickets for {{ movie.Title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            padding: 30px;
+        }
+
+        h2 {
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 25px;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        select,
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h2>Book Tickets for {{ movie.Title }}</h2>
+
+    <form method="post">
+        <label for="showtime">Choose Showtime:</label>
+        <select name="showtime_id" required>
+            <option value="" disabled selected>Select Showtime</option>
+            {% for showtime in showtimes %}
+                <option value="{{ showtime.ShowtimeID }}">
+                    {{ showtime.ShowDate }} at {{ showtime.ShowTime }} (Screen {{ showtime.ScreenNumber }})
+                </option>
+            {% endfor %}
+        </select>
+
+        <label for="num_tickets">Number of Tickets:</label>
+        <input type="number" id="num_tickets" name="num_tickets" min="1" required>
+
+        <input type="submit" value="Book Ticket">
+    </form>
+</body>
+</html>

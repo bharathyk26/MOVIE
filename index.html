@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Now Showing</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            text-align: left;
+        }
+
+        strong {
+            font-size: 1.2em;
+            color: #007bff;
+        }
+
+        p {
+            font-size: 1.1em;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <h1>Now Showing</h1>
+
+    {% if movies %}
+        <ul>
+        {% for movie in movies %}
+            <li>
+                <strong>{{ movie.Title }}</strong><br>
+                <p>{{ movie.Description }}</p>
+            </li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movies available.</p>
+    {% endif %}
+</body>
+</html>
+

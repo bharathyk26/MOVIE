@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Movie</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+            
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 400px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    
+        }
+
+        label {
+            display: block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Add New Movie</h1>
+    <form method="post">
+        <label>Title:
+            <input type="text" name="title" required>
+        </label>
+        <label>Description:
+            <input type="text" name="description" required>
+        </label>
+        <label>Duration (min):
+            <input type="number" name="duration" required>
+        </label>
+        <label>Language:
+            <input type="text" name="language" required>
+        </label>
+        <button type="submit">Add Movie</button>
+    </form>
+</body>
+</html>

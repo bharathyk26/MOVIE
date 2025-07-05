@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movies</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        form {
+            margin-bottom: 30px;
+        }
+
+        input[type="text"] {
+            width: 250px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        .movie-card {
+            background-color: #fff;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 600px;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .movie-card h3 {
+            color: #007bff;
+            margin-top: 0;
+        }
+
+        .movie-card p {
+            color: #555;
+            margin: 8px 0;
+        }
+
+        .movie-card form {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .movie-card input[type="submit"] {
+            background-color: #28a745;
+        }
+
+        .movie-card input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        p.no-results {
+            color: #888;
+            margin-top: 40px;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+    <h2>Available Movies</h2>
+
+    <!-- Search Bar -->
+    <form method="get" action="{{ url_for('movies') }}">
+        <input type="text" name="search" placeholder="Search movies..." value="{{ request.args.get('search') }}">
+        <input type="submit" value="Search">
+    </form>
+
+    {% if movies %}
+        {% for movie in movies %}
+            <div class="movie-card">
+                <h3>{{ movie.Title }}</h3>
+                <p>{{ movie.Description }}</p>
+                <p><strong>Duration:</strong> {{ movie.Duration }} minutes</p>
+                <p><strong>Language:</strong> {{ movie.Language }}</p>
+                <form action="{{ url_for('book_ticket', movie_id=movie.MovieID) }}" method="get">
+                    <input type="submit" value="Book Tickets">
+                </form>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p class="no-results">No movies available right now or no results found.</p>
+    {% endif %}
+</body>
+</html>
